@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des produits{% endblock %}
+
+{% block body %}
+    <h1>Liste des produits</h1>
+        <a href="{{ path('product_add_form') }}">Ajouter un produit</a>
+
+    <ul>
+        {% for product in products %}
+            <li>
+                <strong>{{ product.type }}</strong> - {{ product.description }} 
+                <a href="{{ path('product_edit_form', {'id': product.id}) }}">Edit</a>
+                <a href="{{ path('product_delete_form', {'id': product.id}) }}">Delete</a>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

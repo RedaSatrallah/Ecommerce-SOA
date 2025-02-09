@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ajouter des produits{% endblock %}
+
+{% block body %}
+    <h1>Ajouter des produits</h1>
+
+    <form action="{{ path('product_add') }}" method="POST">
+        <div>
+            <label for="description">Description</label>
+            <input type="text" id="description" name="description" required>
+        </div>
+
+        <div>
+            <label for="price">Price</label>
+            <input type="number" id="price" name="price" step="0.01" required>
+        </div>
+
+        <div>
+            <label for="reference">Reference</label>
+            <input type="text" id="reference" name="reference" required>
+        </div>
+
+        <div>
+            <label for="type">Type</label>
+            <input type="text" id="type" name="type" required>
+        </div>
+
+        <button type="submit">Ajouter</button>
+    </form>
+{% endblock %}

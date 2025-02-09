@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier un produit{% endblock %}
+
+{% block body %}
+    <h1>Modifier un produit</h1>
+
+    <form action="{{ path('product_edit', {'id': product.id}) }}" method="PUT">
+        <label for="description">Description</label>
+        <input type="text" id="description" name="description" value="{{ product.description }}" required>
+
+        <label for="price">Prix</label>
+        <input type="number" id="price" name="price" value="{{ product.price }}" required>
+
+        <label for="reference">Référence</label>
+        <input type="text" id="reference" name="reference" value="{{ product.reference }}" required>
+
+        <label for="type">Type</label>
+        <input type="text" id="type" name="type" value="{{ product.type }}" required>
+
+        <button type="submit">Mettre à jour</button>
+    </form>
+{% endblock %}
+
