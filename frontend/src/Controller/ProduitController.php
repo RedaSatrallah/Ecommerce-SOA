@@ -58,7 +58,7 @@ class ProduitController extends AbstractController {
         ]);
     }
 
-    #[Route('/products/edit/{id}', name: 'product_edit', methods: ["PUT"])]
+    #[Route('/products/edit/{id}', name: 'product_edit', methods: ["POST"])]
     public function updateProduct(Request $request, int $id): Response {
 
         $description = $request->request->get('description');

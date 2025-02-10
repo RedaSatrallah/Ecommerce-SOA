@@ -1,18 +1,35 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Liste des produits{% endblock %}
+{% block title %} Product List {% endblock %}
 
 {% block body %}
-    <h1>Liste des produits</h1>
-        <a href="{{ path('product_add_form') }}">Ajouter un produit</a>
-
-    <ul>
-        {% for product in products %}
-            <li>
-                <strong>{{ product.type }}</strong> - {{ product.description }} 
-                <a href="{{ path('product_edit_form', {'id': product.id}) }}">Edit</a>
-                <a href="{{ path('product_delete_form', {'id': product.id}) }}">Delete</a>
-            </li>
-        {% endfor %}
-    </ul>
+    <h1>Products</h1>
+    <table border="1">
+        <thead>
+            <tr>
+             
+                <th>Reference</th>
+                <th>Description</th>
+                <th>Type</th>
+                <th>Price</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for product in products %}
+                <tr>
+                   
+                    <td>{{ product.reference }}</td>
+                    <td>{{ product.description }}</td>
+                    <td>{{ product.type }}</td>
+                    <td>{{ product.price }}</td>
+                    <td>
+                        <a href="{{ path('product_edit_form', { id: product.id }) }}">Edit</a> | 
+                        <a href="{{ path('product_delete_form', { id: product.id }) }}" onclick="return confirm('Are you sure?')">Delete</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a href="{{ path('product_add_form') }}">Add New Product</a>
 {% endblock %}
