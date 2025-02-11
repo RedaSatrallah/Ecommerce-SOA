@@ -3,16 +3,18 @@
 {% block title %}Add Client{% endblock %}
 
 {% block body %}
+    <a href="{{ path('home') }}">Home</a>
+
     <h1>Add Client</h1>
     <form action="{{ path('client_add') }}" method="POST">
         <label>Nom:</label>
-        <input type="text" name="lasttName" required>
+        <input type="text" name="lastName" required>
         <br>
         <label>Prénom:</label>
         <input type="text" name="firstName" required>
         <br>
         <label>Adresse:</label>
-        <input type="text" name="adress" required>
+        <input type="text" name="address" required>
         <br>
         <label>Téléphone:</label>
         <input type="text" name="phone" required>

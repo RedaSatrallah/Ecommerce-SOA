@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Invoice Details</h1>
+    <p><strong>Invoice ID:</strong> {{ facture.id }}</p>
+    <p><strong>Client:</strong> {{ facture.client.firstName }} {{ facture.client.lastName }}</p>
+    <p><strong>Client Address:</strong> {{ facture.client.address }}</p>
+    <p><strong>Total:</strong> {{ facture.total }}€</p>
+    
+    <h2>Products</h2>
+    <ul>
+        {% for product in facture.products %}
+            <li>{{ product.type }} - {{ product.reference }} - {{ product.price }}€</li>
+        {% endfor %}
+    </ul>
+
+    <a href="{{ path('facture_list') }}">Back to Invoices</a>
+{% endblock %}

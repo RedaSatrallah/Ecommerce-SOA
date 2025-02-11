@@ -3,7 +3,13 @@
 {% block title %}Client List{% endblock %}
 
 {% block body %}
+    <a href="{{ path('home') }}">Home</a>
+    <a href="{{ path('product_list') }}">Produit</a>
+    {# <a href="{{ path('facture_list') }}">Facture</a> #}
+
     <h1>Clients</h1>
+     <a href="{{ path('client_add_form') }}">Add New Client</a>
+
     <table border="1">
         <thead>
             <tr>
@@ -33,5 +39,4 @@
             {% endfor %}
         </tbody>
     </table>
-    <a href="{{ path('client_add_form') }}">Add New Client</a>
 {% endblock %}

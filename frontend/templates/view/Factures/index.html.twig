@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>List of Invoices</h1>
+    <table>
+        <tr>
+            <th>Invoice ID</th>
+            <th>Client</th>
+            <th>Total</th>
+            <th>Products</th>
+            <th>Actions</th>
+        </tr>
+        {% for facture in factures %}
+            <tr>
+                <td>{{ facture.id }}</td>
+                <td>{{ facture.client.firstName }} {{ facture.client.lastName }}</td>
+                <td>{{ facture.total }}€</td>
+                <td>
+                    <ul>
+                        {% for product in facture.products %}
+                            <li>{{ product.type }} - {{ product.price }}€</li>
+                        {% endfor %}
+                    </ul>
+                </td>
+                <td>
+                    <a href="{{ path('facture_detail', {id: facture.id}) }}">View</a>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}

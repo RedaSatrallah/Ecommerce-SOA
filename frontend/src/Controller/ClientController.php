@@ -22,7 +22,7 @@ class ClientController extends AbstractController
         return $this->render('view/Clients/index.html.twig', ['clients' => $clients]);
     }
 
-    #[Route('/clients/add', name: 'client_add_form')]
+    #[Route('/clients/add', name: 'client_add_form', methods: ['GET'])]
     public function addForm(): Response {
         return $this->render('view/Clients/add.html.twig');
     }
@@ -41,7 +41,7 @@ class ClientController extends AbstractController
         return $this->redirectToRoute('client_list');
     }
 
-    #[Route('/clients/edit/{id}', name: 'client_edit_form')]
+    #[Route('/clients/edit/{id}', name: 'client_edit_form', methods: ['GET'])]
     public function editForm($id): Response {
         $client = $this->clientService->getClientById($id);
         return $this->render('view/Clients/edit.html.twig', ['client' => $client]);
@@ -49,17 +49,11 @@ class ClientController extends AbstractController
 
     #[Route('/clients/edit/{id}', name: 'client_edit', methods: ['POST'])]
     public function updateClient(Request $request, $id): Response {
-        $firstName = $request->request->get('firstName');
-        $lastName = $request->request->get('lastName');
-        $Address = $request->request->get('Address');
-        $phone = $request->request->get('phone');
-        $city = $request->request->get('city');
-        
 
         $data = [
             'firstName' => $request->request->get('firstName'),
             'lastName' => $request->request->get('lastName'),
-            'Address' => $request->request->get('Address'),
+            'address' => $request->request->get('address'),
             'phone' => $request->request->get('phone'),
             'city' => $request->request->get('city'),
         ];

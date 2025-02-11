@@ -3,6 +3,8 @@
 {% block title %} Add Product {% endblock %}
 
 {% block body %}
+    <a href="{{ path('home') }}">Home</a>
+
     <h1>Add Product</h1>
     <form action="{{ path('product_add') }}" method="POST">
         <label>Reference:</label>
