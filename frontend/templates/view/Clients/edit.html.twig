@@ -3,26 +3,46 @@
 {% block title %}Edit Client{% endblock %}
 
 {% block body %}
-    <a href="{{ path('home') }}">Home</a>
+<section class="container mx-auto py-10 px-6">
+    <div class="mb-6">
+        <h1 class="text-3xl font-bold text-gray-800">Edit Client</h1>
+    </div>
 
-    <h1>Edit Client</h1>
-    <form action="{{ path('client_edit', { id: client.id }) }}" method="POST">
-        <label>Nom:</label>
-        <input type="text" name="lastName" value="{{ client.lastName }}" required>
-        <br>
-        <label>Prénom:</label>
-        <input type="text" name="firstName" value="{{ client.firstName }}" required>
-        <br>
-        <label>Adresse:</label>
-        <input type="text" name="address" value="{{ client.address }}" required>
-        <br>
-        <label>Téléphone:</label>
-        <input type="text" name="phone" value="{{ client.phone }}" required>
-        <br>
-        <label>Ville:</label>
-        <input type="text" name="city" value="{{ client.city }}" required>
-        <br>
-        <button type="submit">Update Client</button>
+    <form action="{{ path('client_edit', { id: client.id }) }}" method="POST" class="bg-white p-6 rounded-lg shadow-lg max-w-lg mx-auto">
+        <div class="grid gap-4">
+            <div>
+                <label class="block font-semibold mb-1">First Name:</label>
+                <input type="text" name="firstName" value="{{ client.firstName }}" required class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+            </div>
+
+            <div>
+                <label class="block font-semibold mb-1">Last Name:</label>
+                <input type="text" name="lastName" value="{{ client.lastName }}" required class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+            </div>
+
+            <div>
+                <label class="block font-semibold mb-1">Address:</label>
+                <input type="text" name="address" value="{{ client.address }}" required class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+            </div>
+
+            <div>
+                <label class="block font-semibold mb-1">Phone:</label>
+                <input type="text" name="phone" value="{{ client.phone }}" required class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+            </div>
+
+            <div>
+                <label class="block font-semibold mb-1">City:</label>
+                <input type="text" name="city" value="{{ client.city }}" required class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+            </div>
+
+            <button type="submit" class="w-full bg-green-500 text-white font-semibold py-2 rounded-lg shadow-md hover:bg-green-600">
+                Update Client
+            </button>
+        </div>
     </form>
-    <a href="{{ path('client_list') }}">Back to List</a>
+
+    <div class="mt-6 text-center">
+        <a href="{{ path('client_list') }}" class="text-gray-600 hover:underline">Back to Client List</a>
+    </div>
+</section>
 {% endblock %}

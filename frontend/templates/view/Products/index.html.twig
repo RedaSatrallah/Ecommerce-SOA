@@ -1,41 +1,46 @@
 {% extends 'base.html.twig' %}
 
-{% block title %} Product List {% endblock %}
+{% block title %}Product List{% endblock %}
 
 {% block body %}
-    <a href="{{ path('home') }}">Home</a>
-    <a href="{{ path('client_list') }}">Client</a>
-    {# <a href="{{ path('facture_list') }}">Facture</a> #}
+    <section class="container mx-auto py-10 px-6">
+        <div class="flex justify-between items-center mb-6">
+            <h1 class="text-3xl font-bold text-gray-800">Products</h1>
+            <a href="{{ path('product_add_form') }}" class="px-4 py-2 bg-blue-500 text-white rounded-lg shadow-md hover:bg-blue-600">
+                + Add New Product
+            </a>
+        </div>
 
+        <div class="overflow-x-auto">
+            <table class="w-full table-auto border-collapse border border-gray-300">
+                <thead class="bg-gray-100">
+                    <tr>
+                        <th class="border p-3">Reference</th>
+                        <th class="border p-3">Description</th>
+                        <th class="border p-3">Type</th>
+                        <th class="border p-3">Price</th>
+                        <th class="border p-3">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for product in products %}
+                        <tr class="hover:bg-gray-50">
+                            <td class="border p-3">{{ product.reference }}</td>
+                            <td class="border p-3">{{ product.description }}</td>
+                            <td class="border p-3">{{ product.type }}</td>
+                            <td class="border p-3 text-green-600 font-semibold">{{ product.price }}€</td>
+                            <td class="border p-3 space-x-2">
+                                <a href="{{ path('product_edit_form', { id: product.id }) }}" class="text-blue-500 hover:underline">Edit</a>
+                                <a href="{{ path('product_delete_form', { id: product.id }) }}" class="text-red-500 hover:underline" onclick="return confirm('Are you sure?')">Delete</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
 
-    <h1>Products</h1>
-    <a href="{{ path('product_add_form') }}">Add New Product</a>
-
-    <table border="1">
-        <thead>
-            <tr>
-             
-                <th>Reference</th>
-                <th>Description</th>
-                <th>Type</th>
-                <th>Price</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for product in products %}
-                <tr>
-                   
-                    <td>{{ product.reference }}</td>
-                    <td>{{ product.description }}</td>
-                    <td>{{ product.type }}</td>
-                    <td>{{ product.price }}</td>
-                    <td>
-                        <a href="{{ path('product_edit_form', { id: product.id }) }}">Edit</a> | 
-                        <a href="{{ path('product_delete_form', { id: product.id }) }}" onclick="return confirm('Are you sure?')">Delete</a>
-                    </td>
-                </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+        <div class="mt-6">
+            <a href="{{ path('home') }}" class="px-4 py-2 bg-gray-500 text-white rounded-lg shadow-md hover:bg-gray-600">Back to Home</a>
+        </div>
+    </section>
 {% endblock %}

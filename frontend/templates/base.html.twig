@@ -1,10 +1,19 @@
 <!DOCTYPE html>
-<html>
-    <head>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}ShopNest{% endblock %}</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+<div class="min-h-screen bg-gray-100 flex flex-col">
+    {% include 'view/partials/navbar.html.twig' %}
 
-    </head>
-    <body>
-        <h1>ShopNest</h1>
-        {% block body %}{% endblock %}
-    </body>
+  <main class="flex-1 container mx-auto p-6">
+            {% block body %}{% endblock %}
+        </main>
+
+    {% include 'view/partials/footer.html.twig' %}
+ </div>
 </html>

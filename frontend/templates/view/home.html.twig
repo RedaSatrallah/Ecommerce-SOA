@@ -1,10 +1,16 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}ShopNest{% endblock %}
+{% block title %}ShopNest - Home{% endblock %}
 
 {% block body %}
-    <a href="{{ path('product_list') }}">Produit</a>
-    <a href="{{ path('client_list') }}">Client</a>
-    {# <a href="{{ path('facture_list') }}">Facture</a> #}
-
+    <section class="flex flex-col items-center justify-center text-center py-16 bg-gray-100">
+        <h1 class="text-4xl font-bold text-gray-800">Welcome to ShopNest</h1>
+        <p class="text-gray-600 mt-2">Your one-stop shop for quality products.</p>
+        
+        <div class="mt-6 space-x-4">
+            <a href="{{ path('product_list') }}" class="px-4 py-2 bg-blue-500 text-white rounded-lg shadow-md hover:bg-blue-600">View Products</a>
+            <a href="{{ path('client_list') }}" class="px-4 py-2 bg-green-500 text-white rounded-lg shadow-md hover:bg-green-600">Clients</a>
+            <a href="{{ path('facture_list') }}" class="px-4 py-2 bg-yellow-500 text-white rounded-lg shadow-md hover:bg-yellow-600">Invoices</a>
+        </div>
+    </section>
 {% endblock %}
