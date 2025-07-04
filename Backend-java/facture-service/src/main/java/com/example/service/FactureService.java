@@ -3,8 +3,11 @@ package com.example.service;
 import com.example.dto.FactureRequest;
 import com.example.entity.Facture;
 import com.example.repository.FactureRepository;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.web.server.ResponseStatusException;
+
 import java.util.List;
 import java.util.Map;
 
@@ -46,7 +49,7 @@ public class FactureService {
     }
 
     public Facture getFactureById(Long id) {
-        return factureRepository.findById(id).orElse(null);
+        return factureRepository.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Facture not found with ID " + id));
     }
 
     public void deleteFacture(Long id) {

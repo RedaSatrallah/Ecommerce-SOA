@@ -13,6 +13,7 @@
         <module>produit-service</module>
         <module>client-service</module>
         <module>facture-service</module>
+
     </modules>
 
     <properties>
